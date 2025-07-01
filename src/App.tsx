@@ -1,9 +1,10 @@
 import "./App.css";
+import Directory from "./components/DIrectory";
 
 function App() {
   return (
     <div>
-      <h1>Hi Welcome to typescript!</h1>
+      <Directory />
     </div>
   );
 }
