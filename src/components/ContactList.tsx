@@ -8,7 +8,7 @@ interface ContactListProps {
 
 const ContactList: React.FC<ContactListProps> = ({ contacts }) => {
   return (
-    <div>
+    <div className="bg-amber-300 w-full">
       <ul id="contact-list">
         {contacts.map((contact) => (
           <ContactItems key={contact.id} contact={contact} />
