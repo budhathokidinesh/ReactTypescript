@@ -1,8 +1,25 @@
-import React from "react";
-import DIrectoryForm from "./DIrectoryForm";
+import React, { useEffect, useState } from "react";
+
 import ContactList from "./ContactList";
+import axios from "axios";
+import type { getContactsResponse } from "../interface/ApiResponse";
+import DIrectoryForm from "./DirectoryForm";
+import type { Contact } from "../interface/Contacts";
 
 const Directory: React.FC = () => {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  const fetchContacts = async () => {
+    const response = await axios.get<getContactsResponse>(
+      "http://localhost:8000/api/phone-directory/"
+    );
+    console.log(response.data);
+    setContacts(response.data.data);
+  };
+  // Fetching the all contacts
+  useEffect(() => {
+    fetchContacts();
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-amber-300 w-80 p-6 rounded-lg shadow-md text-center flex items-center gap-5 justify-center">
@@ -14,7 +31,7 @@ const Directory: React.FC = () => {
       </h2>
 
       <DIrectoryForm />
-      <ContactList />
+      <ContactList contacts={contacts} />
     </div>
   );
 };

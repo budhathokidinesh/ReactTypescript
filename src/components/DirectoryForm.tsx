@@ -1,7 +1,7 @@
 import React from "react";
 
 const DIrectoryForm: React.FC = () => {
-  return <div>DIrectoryForm</div>;
+  return <div></div>;
 };
 
 export default DIrectoryForm;
